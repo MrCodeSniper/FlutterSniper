@@ -34,7 +34,26 @@ void main() => runApp(MyApp());
  *
  */
 
+class NewRoute extends StatelessWidget{
 
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("appbar"),
+      ),
+
+      body: Center(
+        child: Text("body inside"),
+      ),
+
+    );
+  }
+
+
+
+}
 
 
 
@@ -51,6 +70,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       //应用首页路由 类似vue  home的视图插件为Myhomepage
+      //路由管理 有一个路由栈 push跳转界面 pop返回界面
       home: MyHomePage(title: '陈鸿的flutterDemo'),
     );
   }
@@ -100,6 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display3, //display 1 2 3 逐渐字体变大
             ),
+            FlatButton(
+              child: Text("open new page"),
+              textColor: Colors.amberAccent,
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context){
+                  return new NewRoute();
+                }));
+              },
+            )
           ],
         ),
       ),
