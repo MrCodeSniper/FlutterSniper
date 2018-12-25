@@ -1,4 +1,6 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'test.dart';
 
 //热重载需要app已经启动 skia会解析dart 并重新渲染ui
 //一个app可以是一个插件
@@ -33,6 +35,23 @@ void main() => runApp(MyApp());
  *
  *
  */
+
+
+class RandomWordsWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    final wordpair=new WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(wordpair.toString()),
+    );
+  }
+
+
+}
+
+
 
 class NewRoute extends StatelessWidget{
 
@@ -110,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center, //对齐方式
           children: <Widget>[
             Text(
@@ -128,7 +147,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   return new NewRoute();
                 }));
               },
-            )
+            ),
+            RandomWordsWidget(),
+         //???生效不了   ImageWidget(),
+           QuickImageWidget(),
           ],
         ),
       ),
